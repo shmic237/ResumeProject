@@ -9,6 +9,7 @@ import ShowAllResume from '../resumeShow/showAllResume';
 import { Link } from 'react-router-dom';
 import ImageUrl from '../imageUrl';
 import { PhotoIcon, UserCircleIcon } from '@heroicons/react/24/solid'
+import LogOut from '../logOut';
 
 
 
@@ -18,13 +19,19 @@ export default function ResumeForm() {
 
 
 
+
     return (
         <>
+            <div style={{ display: 'flex', justifyContent: 'end'}}>
+                <LogOut />
+            </div>
+
+            <h1 style={{ color: '#2e6a91' }}>Create Resume</h1>
             <form id="resume-container">
                 <div className="space-y-12">
 
                     <div className="border-b border-gray-900/10 pb-12">
-                        <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6 ">
+                        <div className="mt-10  grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6 ">
                             <div className="sm:col-span-4">
                                 <label htmlFor="fullName" className="block text-sm font-medium leading-6 text-gray-900">
                                     Full Name
@@ -42,55 +49,14 @@ export default function ResumeForm() {
                             </div>
                             <br />
                             {/* <h2 className="text-base font-semibold leading-7 text-gray-900">Education</h2> */}
-                            {formData.education.map((edu, index) => (
-                                <div className="sm:col-span-4">
-                                    <label htmlFor="learning" className="block text-sm font-medium leading-6 text-gray-900">
-                                        Learning
-                                    </label>
-                                    <div className="mt-2">
-                                        <input
-                                            id="learning"
-                                            name="learning"
-                                            type="text"
-                                            autoComplete="learning"
-                                            defaultValue={edu.learning}
-                                            onChange={(e) => handleEducationChange(e, index)}
-                                            className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                        />
 
-                                    </div>
-                                    <label htmlFor="timeFrameLearn" className="block text-sm font-medium leading-6 text-gray-900">
-                                        Time Frame:
-                                    </label>
-                                    <div className="mt-2">
-                                        <input
-                                            id="timeFrameLearn"
-                                            name="timeFrameLearn"
-                                            type="text"
-                                            autoComplete="timeFrameLearn"
-                                            defaultValue={edu.timeFrameLearn}
-                                            onChange={(e) => handleEducationChange(e, index)}
-                                            className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                        />
-
-                                    </div>
-                                </div>))}
-                            <button
-                                type="button"
-                                className="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
-                                onClick={() =>
-                                    setFormData((prevData) => ({
-                                        ...prevData,
-                                        education: [...prevData.education, { learning: '', timeFrameLearn: '' }],
-                                    }))
-                                }
-                            >
-                                Add Education
-                            </button>
+                            <br />
 
                             {/* <h2>Experience</h2> */}
+                            <h2 ><font size="5"><strong>Experience</strong></font></h2><br />
                             {formData.experience.map((exp, index) => (
                                 <div className="sm:col-span-4">
+                                    <br />
                                     <label htmlFor="companyName" className="block text-sm font-medium leading-6 text-gray-900">
                                         Company Name
                                     </label>
@@ -122,6 +88,7 @@ export default function ResumeForm() {
 
                                     </div>
                                 </div>))}
+                            <br />
                             <button
                                 type="button"
                                 className="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
@@ -137,21 +104,73 @@ export default function ResumeForm() {
                         </div>
                     </div>
                 </div>
-                
-                <div className="col-span-full">
-                <div className="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
-                    <div className="text-center">
-                        <PhotoIcon className="mx-auto h-12 w-12 text-gray-300" aria-hidden="true" />
+                <h2 ><font size="5"><strong>Educations</strong></font></h2>
+                {formData.education.map((edu, index) => (
+                    <div className="sm:col-span-4">
+                        <label htmlFor="learning" className="block text-sm font-medium leading-6 text-gray-900">
+                            Learning
+                        </label>
+                        <div className="mt-2">
+                            <input
+                                id="learning"
+                                name="learning"
+                                type="text"
+                                autoComplete="learning"
+                                defaultValue={edu.learning}
+                                onChange={(e) => handleEducationChange(e, index)}
+                                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                            />
 
-                        <ImageUrl />
+                        </div>
+                        <label htmlFor="timeFrameLearn" className="block text-sm font-medium leading-6 text-gray-900">
+                            Time Frame:
+                        </label>
+                        <div className="mt-2">
+                            <input
+                                id="timeFrameLearn"
+                                name="timeFrameLearn"
+                                type="text"
+                                autoComplete="timeFrameLearn"
+                                defaultValue={edu.timeFrameLearn}
+                                onChange={(e) => handleEducationChange(e, index)}
+                                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                            />
+
+                        </div>
+                    </div>))}
+                <br />
+                <button
+                    type="button"
+                    className="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+                    onClick={() =>
+                        setFormData((prevData) => ({
+                            ...prevData,
+                            education: [...prevData.education, { learning: '', timeFrameLearn: '' }],
+                        }))
+                    }
+                >
+                    Add Education
+                </button>
+
+                <div className="col-span-full">
+                    <div className="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
+                        <div className="text-center">
+                            <PhotoIcon className="mx-auto h-12 w-12 text-gray-300" aria-hidden="true" />
+
+                            <ImageUrl />
+                        </div>
                     </div>
                 </div>
-            </div>
 
             </form>
-            <button className="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50" type="button" onClick={submitHandler}>
-                Show Resume
+            <br />
+            <button style={{ color: '#2e6a91' }} className="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50" type="button" onClick={submitHandler}>
+                <strong>
+                    Show Resume
+                </strong>
             </button>
+            <br />
+            <br />
             <Link to="/showAllResume">
                 Get All Resumes
             </Link>

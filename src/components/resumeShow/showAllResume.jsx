@@ -18,8 +18,9 @@ export default function ShowAllResume() {
 
     return (
         <div>
+            <h1 style={{color: '#2e6a91'}}>All Resumes:</h1>
             {resumes.map((resume, index) => {
-                return <div onClick={() =>selectedResume(resume)}>{`Resume ${index + 1}`}</div>
+                return <button onClick={() =>selectedResume(resume)}>{`Resume ${index + 1}`}</button>
             })}
         </div>
     )
